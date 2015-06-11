@@ -47,7 +47,7 @@ import jssc.SerialPortList;
 //https://github.com/rticommunity/rticonnextdds-usecases-medical/blob/master/MedicalDevices/ExampleCode/src/HMI/src/com/rti/medical/DDSCommunicator.java
 public class Main {
 
-	private JFrame frmAnppExample;
+	private JFrame frmMasterHands;
 	private JComboBox<String> comboBoxPort;
 	private JComboBox<String> comboBoxBaud;
 	private JButton btnConnect;
@@ -96,7 +96,7 @@ public class Main {
 				try
 				{
 					Main window = new Main();
-					window.frmAnppExample.setVisible(true);
+					window.frmMasterHands.setVisible(true);
 				}
 				catch (Exception e)
 				{
@@ -181,10 +181,10 @@ public class Main {
 
 		// all of the swing components and layout management is best edited
 		// using the windowbuilder GUI
-		frmAnppExample = new JFrame();
-		frmAnppExample.setTitle("ANPP Example");
-		frmAnppExample.setBounds(100, 100, 819, 631);
-		frmAnppExample.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmMasterHands = new JFrame();
+		frmMasterHands.setTitle("ANPP Example");
+		frmMasterHands.setBounds(100, 100, 819, 631);
+		frmMasterHands.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		// Initializing GridBagLa
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -192,7 +192,7 @@ public class Main {
 		gridBagLayout.rowHeights = new int[] { 10, 0, 0, 0, 5, 0 };
 		gridBagLayout.columnWeights = new double[] { 0.0, 1.0, 1.0, 0.0, 0.0, Double.MIN_VALUE };
 		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
-		frmAnppExample.getContentPane().setLayout(gridBagLayout);
+		frmMasterHands.getContentPane().setLayout(gridBagLayout);
 
 		comboBoxPort = new JComboBox<String>();
 		comboBoxPort.setEnabled(false);
@@ -202,7 +202,7 @@ public class Main {
 		gbc_comboBoxPort.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxPort.gridx = 1;
 		gbc_comboBoxPort.gridy = 1;
-		frmAnppExample.getContentPane().add(comboBoxPort, gbc_comboBoxPort);
+		frmMasterHands.getContentPane().add(comboBoxPort, gbc_comboBoxPort);
 
 		comboBoxBaud = new JComboBox<String>();
 		comboBoxBaud.setModel(new DefaultComboBoxModel<String>(new String[] { "1200", "2400", "4800", "9600", "19200", "38400", "57600", "115200", "230400", "460800", "500000", "921600", "1000000" }));
@@ -212,7 +212,7 @@ public class Main {
 		gbc_comboBoxBaud.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxBaud.gridx = 2;
 		gbc_comboBoxBaud.gridy = 1;
-		frmAnppExample.getContentPane().add(comboBoxBaud, gbc_comboBoxBaud);
+		frmMasterHands.getContentPane().add(comboBoxBaud, gbc_comboBoxBaud);
 
 		btnConnect = new JButton("Connect");
 		btnConnect.setEnabled(false);
@@ -259,7 +259,7 @@ public class Main {
 		gbc_btnConnect.insets = new Insets(0, 0, 5, 5);
 		gbc_btnConnect.gridx = 3;
 		gbc_btnConnect.gridy = 1;
-		frmAnppExample.getContentPane().add(btnConnect, gbc_btnConnect);
+		frmMasterHands.getContentPane().add(btnConnect, gbc_btnConnect);
 		
 		// Creating a Panel to add Labels and Text
 		panel = new JPanel();
@@ -270,7 +270,7 @@ public class Main {
 		gbc_panel.fill = GridBagConstraints.BOTH;
 		gbc_panel.gridx = 1;
 		gbc_panel.gridy = 2;
-		frmAnppExample.getContentPane().add(panel, gbc_panel);
+		frmMasterHands.getContentPane().add(panel, gbc_panel);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[] { 10, 0, 0, 5, 0, 5, 0, 0 };
 		gbl_panel.rowHeights = new int[] { 5, 0, 0, 0, 5, 0 };
@@ -331,12 +331,12 @@ public class Main {
 	    	    if (!source.getValueIsAdjusting()) {
 	    	        int val = (int)source.getValue();
 	    	        System.out.println("VAL: " + val);
-	    	        instance.lPinky = val/100;
-	    	        instance.lRing = val/100;
-	    	        instance.lMiddle  = val/100;
-	    	        instance.lIndex = val/100;
-	    	        instance.lThumbFlexion = val/100;
-	    	        instance.lThumbOpposition = val/100;
+	    	        instance.lPinky = val/100.0;
+	    	        instance.lRing = val/100.0;
+	    	        instance.lMiddle  = val/100.0;
+	    	        instance.lIndex = val/100.0;
+	    	        instance.lThumbFlexion = val/100.0;
+	    	        instance.lThumbOpposition = val/100.0;
 	    	        
 	    	        /* Write data */
 					writer.write(instance, instance_handle);
