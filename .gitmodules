@@ -1,0 +1,3 @@
+[submodule "src/TelebotDDSCore"]
+	path = src/TelebotDDSCore
+	url = https://github.com/FIUDiscoveryLab/TelebotDDSCore.git
