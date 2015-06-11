@@ -85,10 +85,43 @@ public class Main {
 	 * @throws IllegalArgumentException 
 	 * @throws IllegalAccessException 
 	 */
-	public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException
+	public static void main(String[] args) 
 	{
-		/////////////////////////////////////////
-		// DDS
+
+		
+		EventQueue.invokeLater(new Runnable()
+		{
+			public void run()
+			{
+				try
+				{
+					Main window = new Main();
+					window.frmAnppExample.setVisible(true);
+				}
+				catch (Exception e)
+				{
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 * @throws InvocationTargetException 
+	 * @throws IllegalArgumentException 
+	 * @throws IllegalAccessException 
+	 * @throws SecurityException 
+	 * @throws NoSuchMethodException 
+	 * @throws ClassNotFoundException 
+	 */
+	public Main() throws ClassNotFoundException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException
+	{
+		initializeDDS();
+		initializeGUI();
+	}
+	
+	private void initializeDDS() throws ClassNotFoundException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		
 		participant = DomainParticipantFactory.get_instance().create_participant(
                 0, // Domain ID = 0
@@ -130,38 +163,12 @@ public class Main {
 			System.err.println("create_datawriter error\n");
 			return;
 		}
-		
-		//////////////////////////////////////////////////////
-		
-		EventQueue.invokeLater(new Runnable()
-		{
-			public void run()
-			{
-				try
-				{
-					Main window = new Main();
-					window.frmAnppExample.setVisible(true);
-				}
-				catch (Exception e)
-				{
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public Main()
-	{
-		initialize();
 	}
 	
 	/**
 	 * Initializes the GUI - JFrame
 	 */
-	private void initialize(){
+	private void initializeGUI(){
 		// this sets swing to use the native look and feel, much more
 		// aesthetically pleasing
 		try
@@ -486,61 +493,6 @@ public class Main {
 			                    }
 			                }
 			            } 
-						
-/*						for (int i = 0; i < buffer.length; i++)
-						{
-							if (packetDecoder.bufferLength < packetDecoder.buffer.length)
-							{
-								packetDecoder.buffer[packetDecoder.bufferLength++] = buffer[i];
-							}
-						}
-						
-						ANPacket packet = null;
-						while ((packet = packetDecoder.packetDecode()) != null)
-						{
-							switch (packet.id)
-							{
-								case ANPacket.PACKET_ID_RAW_SENSORS:
-									if (packet.length == 48)
-									{
-										final ANPacket28 anPacket28 = new ANPacket28(packet);
-
-										SwingUtilities.invokeLater(new Runnable()
-										{
-											public void run()
-											{
-												textArea.append("Received Raw Sensors Packet\n");
-												textArea.setCaretPosition(textArea.getDocument().getLength());
-											}
-										});
-									}
-									break;
-								case ANPacket.PACKET_ID_SYSTEM_STATE:
-									if (packet.length == 100)
-									{
-										final ANPacket20 anPacket20 = new ANPacket20(packet);
-
-										SwingUtilities.invokeLater(new Runnable()
-										{
-											public void run()
-											{
-												textArea.append("Received System State Packet\n");
-												textArea.setCaretPosition(textArea.getDocument().getLength());
-												textFieldLatitude.setText(Double.toString(anPacket20.position[0] * 180 / Math.PI));
-												textFieldLongitude.setText(Double.toString(anPacket20.position[1] * 180 / Math.PI));
-												textFieldHeight.setText(Double.toString(anPacket20.position[2]));
-												textFieldRoll.setText(Double.toString(anPacket20.orientation[0] * 180 / Math.PI));
-												textFieldPitch.setText(Double.toString(anPacket20.orientation[1] * 180 / Math.PI));
-												textFieldYaw.setText(Double.toString(anPacket20.orientation[2] * 180 / Math.PI));
-
-											}
-										});
-									}
-									break;
-								default:
-									break;
-							}
-						}*/
 					}
 				}
 				catch (SerialPortException exception)
