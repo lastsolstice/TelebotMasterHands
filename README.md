@@ -1,10 +1,10 @@
-# DDSCore
+# TelebotMasterHands
 This project contains the sample HelloWorld DDS publisher and Subscriber implementation
 
 ##Installation
 
 ###Git
-`git clone https://github.com/FIUDiscoveryLab/DDSCore.git`
+`git clone --recursive https://github.com/FIUDiscoveryLab/DDSCore.git`
 
 ###Eclipse IDE
 
