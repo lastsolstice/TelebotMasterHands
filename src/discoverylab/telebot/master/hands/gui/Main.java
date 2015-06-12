@@ -308,19 +308,20 @@ public class Main {
 		
 		// Slider Widget
 //		slider = new JSlider(JSlider.HORIZONTAL, SLIDER_MIN, SLIDER_MAX, SLIDER_INIT);
-		Hashtable labelTable = new Hashtable();
-		labelTable.put( new Integer( 0 ), new JLabel("0.0") );
-		labelTable.put( new Integer( 5 ), new JLabel("0.5") );
-		labelTable.put( new Integer( 10 ), new JLabel("1.0") );
+//		Hashtable labelTable = new Hashtable();
+//		labelTable.put( new Integer( 0 ), new JLabel("0.0") );
+//		labelTable.put( new Integer( 5 ), new JLabel("0.5") );
+//		labelTable.put( new Integer( 10 ), new JLabel("1.0") );
 		
-		slider = new JSlider();
+//		slider = new JSlider();
+		slider = new JSlider(JSlider.HORIZONTAL, 1000, 2000, 2000);
 		GridBagConstraints gbc_slider = new GridBagConstraints();
 		gbc_slider.insets = new Insets(0, 0, 5, 5);
 		gbc_slider.fill = GridBagConstraints.HORIZONTAL;
 		gbc_slider.gridx = 5;
-		slider.setLabelTable( labelTable );
-		slider.setMajorTickSpacing(1);
-        slider.setMaximum(10);
+		//slider.setLabelTable( labelTable );
+		slider.setMajorTickSpacing(250);
+//        slider.setMaximum(10);
         slider.setPaintLabels(true);
         slider.setPaintTicks(true);
 	    panel.add(slider, gbc_slider);
@@ -331,12 +332,18 @@ public class Main {
 	    	    if (!source.getValueIsAdjusting()) {
 	    	        int val = (int)source.getValue();
 	    	        System.out.println("VAL: " + val);
-	    	        instance.lPinky = val/100.0;
-	    	        instance.lRing = val/100.0;
-	    	        instance.lMiddle  = val/100.0;
-	    	        instance.lIndex = val/100.0;
-	    	        instance.lThumbFlexion = val/100.0;
-	    	        instance.lThumbOpposition = val/100.0;
+//	    	        instance.lPinky = val/100.0;
+//	    	        instance.lRing = val/100.0;
+//	    	        instance.lMiddle  = val/100.0;
+//	    	        instance.lIndex = val/100.0;
+//	    	        instance.lThumbFlexion = val/100.0;
+//	    	        instance.lThumbOpposition = val/100.0;
+	    	        instance.lPinky = val;
+	    	        instance.lRing = val;
+	    	        instance.lMiddle  = val;
+	    	        instance.lIndex = val;
+	    	        instance.lThumbFlexion = val;
+	    	        instance.lThumbOpposition = val;
 	    	        
 	    	        /* Write data */
 					writer.write(instance, instance_handle);

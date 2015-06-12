@@ -27,7 +27,6 @@ import jssc.SerialPort;
 
 public class Main {
 
-
 	private JFrame frmSlaveHands;
 	private JComboBox<String> comboBoxPort;
 	private JComboBox<String> comboBoxBaud;
@@ -74,7 +73,6 @@ public class Main {
 	
 	private void initializeDDS() throws Exception{
 		communicator = new DDSCommunicator();
-		
 		communicator.createParticipant();
 		communicator.createPublisher();
 		communicator.createSubscriber();
@@ -97,8 +95,8 @@ public class Main {
 			System.err.println("Error creating data reader.\n");
 			throw new Exception();
 		}
-
 	}
+	
 	private void initializeGUI(){
 		
 	}
