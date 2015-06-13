@@ -73,15 +73,18 @@ public class TMasterToHandsListener extends DataReaderAdapter{
 							command.lMiddle + " " +
 							command.lIndex + " " +
 							command.lThumbFlexion + " " +
-							command.lThumbOpposition;
+							command.lThumbOpposition + "\r";
 					
 					System.out.println(commandStr);
-//					serialPort.writeString(commandStr);
+					serialPort.writeString(commandStr);
 				}
 			}
 		} catch (RETCODE_NO_DATA noData) {
             // No data to process
-        } finally {
+        } catch (SerialPortException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
         	tMasterToHandsDataReader.return_loan(dataSeq, infoSeq);
         }
 	}
