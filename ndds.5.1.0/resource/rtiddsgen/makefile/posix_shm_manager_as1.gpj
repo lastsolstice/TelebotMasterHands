@@ -1,7 +1,0 @@
-#!gbuild
-[Program]
-	-I..
-	:sourceDir=..
-        -llibshm_manager.a
-shm_area.c
-posix_shm_manager_INTEGRITY.ld
