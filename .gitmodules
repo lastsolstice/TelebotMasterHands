@@ -1,3 +1,6 @@
 [submodule "src/TelebotDDSCore"]
 	path = src/TelebotDDSCore
 	url = https://github.com/FIUDiscoveryLab/TelebotDDSCore.git
+[submodule "ThirdParty/JSSC"]
+	path = ThirdParty/JSSC
+	url = https://github.com/FIUDiscoveryLab/JSSC.git
