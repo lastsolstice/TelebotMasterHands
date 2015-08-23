@@ -482,7 +482,7 @@ public class Main {
 			                    //if (b == '\r') {
 			                	if (b == '>') {
 			                        receivingMessage = false;
-			                        String toProcess = message.toString();
+			                        final String toProcess = message.toString();
 			                        //Platform.runLater(new Runnable() {
 			                        SwingUtilities.invokeLater(new Runnable()
 			                        {
