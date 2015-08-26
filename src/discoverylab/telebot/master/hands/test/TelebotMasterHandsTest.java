@@ -14,6 +14,7 @@ public class TelebotMasterHandsTest {
 		
 		//INITIATE Slave Component DEVICE
 		TelebotMasterHands telebotMasterHands = new TelebotMasterHands(5555);
+		
 		telebotMasterHands.initiate();
 		
 		//INITIATE Transmission PROTOCOL
@@ -22,7 +23,17 @@ public class TelebotMasterHandsTest {
 		//INITIATE DataWriter
 		telebotMasterHands.initiateDataWriter();
 		
-
+		while(true)
+		{
+			telebotMasterHands.test();
+			
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 }
